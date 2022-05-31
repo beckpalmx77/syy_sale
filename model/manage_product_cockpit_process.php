@@ -61,9 +61,9 @@ if ($_POST["action"] === 'GET_PRODUCT') {
         );
     }
 
-    $my_file = fopen("wd_file2.txt", "w") or die("Unable to open file!");
-    fwrite($my_file, " Condition = " . $searchQuery . " | " . $price_code);
-    fclose($my_file);
+    //$my_file = fopen("wd_file2.txt", "w") or die("Unable to open file!");
+    //fwrite($my_file, " Condition = " . $searchQuery . " | " . $price_code);
+    //fclose($my_file);
 
 ## Total number of records without filtering
     $stmt = $conn->prepare("SELECT COUNT(*) AS allcount FROM ims_product where price_code like '" . $price_code . "%' ");
