@@ -34,9 +34,9 @@ if ($_POST["action"] === 'GET_PRODUCT') {
 
     $price_code = $_POST["price_code"];
 
-    $my_file = fopen("price_code.txt", "w") or die("Unable to open file!");
-    fwrite($my_file, " price_code = " . $price_code);
-    fclose($my_file);
+    //$my_file = fopen("price_code.txt", "w") or die("Unable to open file!");
+    //fwrite($my_file, " price_code = " . $price_code);
+    //fclose($my_file);
 
     ## Read value
     $draw = $_POST['draw'];
@@ -82,9 +82,9 @@ if ($_POST["action"] === 'GET_PRODUCT') {
     $sql_getdata = "SELECT * FROM ims_product WHERE price_code like '" . $price_code . "%' " . $searchQuery
         . " ORDER BY " . $columnName . " " . $columnSortOrder . " LIMIT :limit,:offset";
 
-    $my_file = fopen("sql_getdata.txt", "w") or die("Unable to open file!");
-    fwrite($my_file, " sql_getdata = " . $sql_getdata);
-    fclose($my_file);
+    //$my_file = fopen("sql_getdata.txt", "w") or die("Unable to open file!");
+    //fwrite($my_file, " sql_getdata = " . $sql_getdata);
+    //fclose($my_file);
 
     $stmt = $conn->prepare($sql_getdata);
 
@@ -120,12 +120,12 @@ if ($_POST["action"] === 'GET_PRODUCT') {
 
     }
 
-    $my_file = fopen("getproduct_data.txt", "w") or die("Unable to open file!");
-    fwrite($my_file, " getproductdata = " . $draw . " | " . $totalRecords . " | " . $totalRecordwithFilter . " | " . $data);
-    fclose($my_file);
+    //$my_file = fopen("getproduct_data.txt", "w") or die("Unable to open file!");
+    //fwrite($my_file, " getproductdata = " . $draw . " | " . $totalRecords . " | " . $totalRecordwithFilter . " | " . $data);
+    //fclose($my_file);
 
-    $json = json_encode($data);
-    file_put_contents("get_pproduct_data.json", $json);
+    //$json = json_encode($data);
+    //file_put_contents("get_pproduct_data.json", $json);
 
 ## Response Return Value
     $response = array(

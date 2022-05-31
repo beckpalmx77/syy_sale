@@ -1,1 +1,0 @@
- Condition =  AND price_code like 'CP%'  | CP
