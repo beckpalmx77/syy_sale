@@ -124,6 +124,9 @@ if ($_POST["action"] === 'GET_PRODUCT') {
     fwrite($my_file, " getproductdata = " . $draw . " | " . $totalRecords . " | " . $totalRecordwithFilter . " | " . $data);
     fclose($my_file);
 
+    $json = json_encode($data);
+    file_put_contents("get_pproduct_data.json", $json);
+
 ## Response Return Value
     $response = array(
         "draw" => intval($draw),
