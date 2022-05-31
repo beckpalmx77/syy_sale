@@ -25,7 +25,7 @@ if (strlen($_SESSION['alogin']) == "") {
                                 <div class="col-lg-2">
                                     <div class="form-group">
                                         <input type="hidden" class="form-control" id="price_code" name="price_code"
-                                               readonly="true" value="CP1">
+                                               readonly="true" value="CP">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
