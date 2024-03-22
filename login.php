@@ -3,11 +3,12 @@
 
 <?php
 include('includes/Header.php');
+include('includes/CheckDevice.php');
 ?>
 
 <style>
     body {
-        font-family: 'Kanit', sans-serif;
+        font-family: 'Prompt', sans-serif;
     }
 </style>
 
@@ -107,7 +108,7 @@ include('includes/Header.php');
                             <div class="login-form">
                                 <div class="text-center">
                                     <div><img src="img/logo/logo text-01.png" width="400" height="158"/></div>
-                                    <h1 class="h4 text-gray-900 mb-4">ระบบงานขาย สงวนออโต้คาร์</h1>
+                                    <h1 class="h4 text-gray-900 mb-4">ระบบแสดงราคา - ยอดคงเหลือ SYY-COCKPIT-BTC</h1>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="username"
@@ -128,7 +129,11 @@ include('includes/Header.php');
                                             <input class="form-check-input" type="checkbox" value="on" id="remember"
                                                    name="remember">
                                             <label class="form-check-label" for="remember">
-                                                Remember Me 30 Days
+                                                <?php  if ($_SESSION['deviceType']=='computer') {?>
+                                                    <p style="color:blue;">Remember Me 30 Days</p>
+                                                <?php } else { ?>
+                                                    <p style="color:red;">Remember Me 30 Days</p>
+                                                <?php } ?>
                                             </label>
                                         </div>
                                     </div>

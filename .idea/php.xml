@@ -58,11 +58,14 @@
       <path value="$PROJECT_DIR$/vendor/bootstrap-select/css" />
       <path value="$PROJECT_DIR$/vendor/bootstrap-select/js" />
       <path value="$PROJECT_DIR$/vendor/fontawesome-free/scss" />
+      <path value="$PROJECT_DIR$/vendor/maxmind/web-service-common" />
+      <path value="$PROJECT_DIR$/vendor/maxmind-db/reader" />
+      <path value="$PROJECT_DIR$/vendor/geoip2/geoip2" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">
     <servers>
-      <server host="localhost" id="fd03c3ae-170c-4c42-9330-a045e06f20db" name="localhost-sale" use_path_mappings="true" />
+      <server host="localhost" id="fd03c3ae-170c-4c42-9330-a045e06f20db" name="localhost-sale" port="8888" use_path_mappings="true" />
     </servers>
   </component>
 </project>

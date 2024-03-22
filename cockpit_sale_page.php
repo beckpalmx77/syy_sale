@@ -86,6 +86,14 @@ if (strlen($_SESSION['alogin']) == "") {
                         <div class="modal-body">
 
                             <div class="form-group">
+                                <label for="price_code_detail" class="control-label"><b>Price Code</b></label>
+                                <input type="price_code_detail" class="form-control"
+                                       id="price_code_detail" name="price_code_detail"
+                                       readonly="true"
+                                       placeholder="Price Code">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="product_id" class="control-label"><b>รหัสสินค้า</b></label>
                                 <input type="product_id" class="form-control"
                                        id="product_id" name="product_id"
@@ -153,39 +161,18 @@ if (strlen($_SESSION['alogin']) == "") {
                 <div class="container"></div>
 
                 <div class="modal-body">
-                    <label for="product_id_detail"
-                           class="control-label"><b>รหัสสินค้า</b></label>
-                    <input type="text" class="form-control"
-                           id="product_id_detail"
-                           name="product_id_detail"
-                           required="required"
-                           readonly="true"
-                           placeholder="สินค้า">
 
-                    <label for="product_name"
-                           class="control-label"><b>ชื่อสินค้า</b></label>
                     <input type="text" class="form-control"
-                           id="product_name_detail"
-                           name="product_name_detail"
-                           required="required"
-                           readonly="true"
-                           placeholder="ชื่อสินค้า">
-                    <label for="price"
-                           class="control-label"><b>ราคา</b></label>
-                    <input type="text" class="form-control"
-                           id="price_detail"
-                           name="price_detail"
-                           required="required"
-                           readonly="true"
-                           placeholder="ราคา">
-                    <br>
-
+                           id="product_detail"
+                           name="product_detail"
+                           placeholder="">
                     <table cellpadding="0" cellspacing="0" border="0"
                            class="display"
                            id="TableStockList"
                            width="100%">
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>คลัง</th>
                             <th>ตำแหน่งเก็บ</th>
                             <th>จำนวน</th>
@@ -315,14 +302,14 @@ if (strlen($_SESSION['alogin']) == "") {
                         let id = response[i].id;
                         let product_id = response[i].product_id;
                         let product_name = response[i].product_name;
-                        //let price_code = response[i].price_code;
+                        let price_code = response[i].price_code;
                         let price = response[i].price;
 
                         $('#recordModal').modal('show');
                         $('#id').val(id);
                         $('#product_id').val(product_id);
                         $('#product_name').val(product_name);
-                        //$('#price_code').val(price_code);
+                        $('#price_code_detail').val(price_code);
                         $('#price').val(price);
                         $('.modal-title').html("<i class='fa fa-plus'></i> Detail Record");
                         $('#action').val('UPDATE');
@@ -355,6 +342,7 @@ if (strlen($_SESSION['alogin']) == "") {
             $('#product_id_detail').val($('#product_id').val());
             $('#product_name_detail').val($('#product_name').val());
             $('#price_detail').val($('#price').val());
+            $('#product_detail').val($('#product_id').val() + " | " + $('#product_name').val() + " | " + $('#price').val());
 
             let product_id_detail = $('#product_id').val();
 
@@ -364,7 +352,7 @@ if (strlen($_SESSION['alogin']) == "") {
             let dataRecords = $('#TableStockList').DataTable({
                 'lengthMenu': [[5, 10, 20, 50, 100], [5, 10, 20, 50, 100]],
                 'language': {
-                    info: 'หน้าที่ _PAGE_ จาก _PAGES_',
+                    info: 'ข้อมูลจำนวน _MAX_ รายการ',
                     infoEmpty: 'ไม่มีข้อมูล',
                     zeroRecords: "ไม่มีข้อมูลตามเงื่อนไข",
                     infoFiltered: '(กรองข้อมูลจากทั้งหมด _MAX_ รายการ)',
@@ -374,16 +362,19 @@ if (strlen($_SESSION['alogin']) == "") {
                         next: 'ต่อไป'
                     }
                 },
-                'searching': false,
-                'paging': false,
                 'processing': true,
                 'serverSide': true,
                 'serverMethod': 'post',
+                'autoWidth': true,
+                <?php  if ($_SESSION['deviceType']!=='computer') {
+                    echo "'scrollX': true,";
+                }?>
                 'ajax': {
-                    'url': 'process/load_stock_balance_data.php',
+                    'url': 'process/load_stock_balance_data_svr.php',
                     'data': formData
                 },
                     'columns': [
+                        {data: 'record'},
                         {data: 'WH_CODE'},
                         {data: 'WL_CODE'},
                         {data: 'QTY'}

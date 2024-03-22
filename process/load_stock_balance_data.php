@@ -46,6 +46,7 @@ if ($_POST["action"] === 'GET_STOCK') {
             $link_wl  =  "<a href='#'  onclick=\"OpenPopup('" . $row['WL_CODE'] . " " . $row['WL_NAME'] ." = " .  $row['QTY'] . "')\" data-toggle='tooltip' title='" . $row['WL_NAME'] . "'>" . $row['WL_CODE'] . "</a>" ;
 
             $data[] = array(
+                "record" => $record,
                 "SKU_CODE" => $row['SKU_CODE'],
                 "SKU_NAME" => $row['SKU_NAME'],
                 "WH_CODE" => $link_wh,
